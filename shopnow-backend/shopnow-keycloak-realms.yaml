@@ -44,10 +44,17 @@ spec:
             - mountPath: /opt/keycloak/data/import
               name: keycloak-realms
               subPath: keycloak-realms
+            - mountPath: /opt/keycloak/data/import/realms
+              name: realm-config
+              readOnly: true
       volumes:
         - name: keycloak-realms
           persistentVolumeClaim:
             claimName: keycloak-realms-pvc
+        - name: realm-config
+          configMap:
+            name: keycloak-realm-config
+            optional: true
             
 ---
 
@@ -97,7 +104,7 @@ metadata:
       arn:aws:acm:ap-southeast-1:022499043310:certificate/647360bb-b2ea-4ec5-9551-2da20236dd16
     
     # ALB Configuration
-    alb.ingress.kubernetes.io/group.name: shopnow-frontend
+    alb.ingress.kubernetes.io/group.name: shopnow-keycloak-realms
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
