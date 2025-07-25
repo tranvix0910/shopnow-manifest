@@ -6,7 +6,7 @@ metadata:
   namespace: shopnow
 
 resources:
-  - shopnow-backend/shopnow-keycloak-mysql.yaml
+  - shopnow-backend/keycloak-realm-configmap.yaml
   - shopnow-backend/shopnow-keycloak-realms.yaml
   - shopnow-backend/shopnow-postgresql.yaml
   - kustomize/patches/storage-patch.yaml
