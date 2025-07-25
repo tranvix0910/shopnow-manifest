@@ -12,16 +12,6 @@ resources:
 
 namespace: shopnow
 
-commonLabels:
-  app.kubernetes.io/name: shopnow
-  app.kubernetes.io/version: v1
-  app.kubernetes.io/component: database
-  app.kubernetes.io/managed-by: kustomize
-
-commonAnnotations:
-  config.kubernetes.io/local-config: "false"
-  kustomize.toolkit.fluxcd.io/reconcile: "enabled"
-
 images:
   - name: mysql
     newTag: "8.0"
