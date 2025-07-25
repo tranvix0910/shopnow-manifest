@@ -78,17 +78,35 @@ metadata:
   name: shopnow-keycloak-realms-ingress
   namespace: shopnow
   annotations:
-    alb.ingress.kubernetes.io/actions.ssl-redirect: >-
-      {"Type": "redirect", "RedirectConfig": {"Protocol": "HTTPS", "Port":
-      "443", "Host": "#{host}", "Path": "/#{path}", "Query": "#{query}",
-      "StatusCode": "HTTP_301"}}
-    alb.ingress.kubernetes.io/certificate-arn: >-
+    # SSL Redirect Configuration
+    alb.ingress.kubernetes.io/actions.ssl-redirect: |
+      {
+        "Type": "redirect",
+        "RedirectConfig": {
+          "Protocol": "HTTPS",
+          "Port": "443",
+          "Host": "#{host}",
+          "Path": "/#{path}",
+          "Query": "#{query}",
+          "StatusCode": "HTTP_301"
+        }
+      }
+    
+    # SSL Certificate
+    alb.ingress.kubernetes.io/certificate-arn: |
       arn:aws:acm:ap-southeast-1:022499043310:certificate/647360bb-b2ea-4ec5-9551-2da20236dd16
+    
+    # ALB Configuration
     alb.ingress.kubernetes.io/group.name: shopnow-frontend
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/subnets: subnet-00502d28cf8623a99,subnet-00f29dc65958e83c4,subnet-0b4dd832c80661a42
     alb.ingress.kubernetes.io/target-type: ip
+    
+    # Subnet Configuration
+    alb.ingress.kubernetes.io/subnets: |
+      subnet-00502d28cf8623a99,
+      subnet-00f29dc65958e83c4,
+      subnet-0b4dd832c80661a42
 spec:
   ingressClassName: alb
   rules:
