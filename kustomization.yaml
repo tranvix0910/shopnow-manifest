@@ -24,3 +24,6 @@ images:
 
 sortOptions:
   order: fifo 
+
+patches:
+  - path: kustomize/patches/storage-patch.yaml
