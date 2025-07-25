@@ -6,9 +6,10 @@ metadata:
   namespace: shopnow
 
 resources:
-  - ../shopnow-backend/shopnow-keycloak-mysql.yaml
-  - ../shopnow-backend/shopnow-keycloak-realms.yaml
-  - ../shopnow-backend/shopnow-postgresql.yaml
+  - shopnow-backend/shopnow-keycloak-mysql.yaml
+  - shopnow-backend/shopnow-keycloak-realms.yaml
+  - shopnow-backend/shopnow-postgresql.yaml
+  - kustomize/patches/storage-patch.yaml
 
 namespace: shopnow
 
@@ -21,7 +22,4 @@ images:
     newTag: "15"
 
 sortOptions:
-  order: fifo
-
-patches:
-  - path: patches/storage-patch.yaml
+  order: fifo 

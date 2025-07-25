@@ -7,8 +7,8 @@ spec:
   project: shopnow
   source:
     repoURL: https://github.com/tranvix0910/shopnow-manifest.git
-    targetRevision: HEAD
-    path: kustomize
+    targetRevision: main
+    path: .
   destination:
     server: https://kubernetes.default.svc
     namespace: shopnow
