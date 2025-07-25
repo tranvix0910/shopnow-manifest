@@ -23,7 +23,4 @@ images:
     newTag: "15"
 
 sortOptions:
-  order: fifo 
-
-patches:
-  - path: kustomize/patches/storage-patch.yaml
+  order: fifo

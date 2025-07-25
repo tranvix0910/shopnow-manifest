@@ -44,8 +44,9 @@ spec:
             - mountPath: /opt/keycloak/data/import
               name: keycloak-realms
               subPath: keycloak-realms
-            - mountPath: /opt/keycloak/data/import
+            - mountPath: /opt/keycloak/data/import/realm-export.json
               name: realm-config
+              subPath: realm-export.json
               readOnly: true
       volumes:
         - name: keycloak-realms
